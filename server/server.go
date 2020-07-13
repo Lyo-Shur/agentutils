@@ -18,7 +18,10 @@ func StartServer(conf config.Config, tasks []task.Task) {
 	// 日志服务
 	logger := golog.GetLogger()
 	logger.AddHandler(golog.GetPrintHandler())
-	logger.AddHandler(golog.GetFileHandler(conf.Log.Path))
+	// 判断是否启用日志
+	if conf.Log.Open {
+		logger.AddHandler(golog.GetFileHandler(conf.Log.Path))
+	}
 	// 启动服务
 	addr := "0.0.0.0:" + conf.Server.Port
 	logger.Info("agent starts at " + addr)
