@@ -2,7 +2,7 @@ package server
 
 import (
 	"bytes"
-	"github.com/Lyo-Shur/golog"
+	"github.com/lyoshur/golog"
 	"io/ioutil"
 	"math/rand"
 	"net/http"

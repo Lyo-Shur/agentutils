@@ -1,9 +1,9 @@
 package agentutils
 
 import (
-	"github.com/Lyo-Shur/agentutils/config"
-	"github.com/Lyo-Shur/agentutils/server"
-	"github.com/Lyo-Shur/agentutils/task"
+	"github.com/lyoshur/agentutils/config"
+	"github.com/lyoshur/agentutils/server"
+	"github.com/lyoshur/agentutils/task"
 )
 
 // 配置相关

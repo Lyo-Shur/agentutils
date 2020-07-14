@@ -1,9 +1,9 @@
 package server
 
 import (
-	"github.com/Lyo-Shur/agentutils/config"
-	"github.com/Lyo-Shur/agentutils/task"
-	"github.com/Lyo-Shur/golog"
+	"github.com/lyoshur/agentutils/config"
+	"github.com/lyoshur/agentutils/task"
+	"github.com/lyoshur/golog"
 	"io"
 	"math/rand"
 	"net/http"
