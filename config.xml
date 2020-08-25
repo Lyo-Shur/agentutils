@@ -4,10 +4,10 @@
     <!-- 日志所在目类 -->
     <log open="true" path="log"/>
     <!-- 反向代理设置 -->
-    <proxy path="/test">
+    <proxy host="*" path="/test">
         <url>http://127.0.0.1:8080/</url>
     </proxy>
-    <proxy path="/test2">
+    <proxy host="*" path="/test2">
         <url>http://127.0.0.1:8080/</url>
     </proxy>
 </xml>

@@ -23,6 +23,8 @@ type Log struct {
 
 // 反向代理配置
 type Proxy struct {
+	// 请求host
+	Host string `xml:"host,attr"`
 	// 代理路径
 	Path string `xml:"path,attr"`
 	// 代理列表

@@ -47,13 +47,17 @@ func getHandler(conf config.Config, tasks []task.Task, logger *golog.Logger) fun
 		requestLogger.Log()
 
 		// 请求路径
+		host := strings.Replace(r.Host, ":"+conf.Server.Port, "", -1)
 		prefix := r.URL.Path
 		parameter := r.URL.RawQuery
 		var proxy config.Proxy
 		for index := range conf.Proxies {
 			item := conf.Proxies[index]
-			if strings.HasPrefix(prefix, item.Path) {
-				proxy = item
+			if item.Host == "*" || item.Host == host {
+				if strings.HasPrefix(prefix, item.Path) {
+					proxy = item
+					break
+				}
 			}
 		}
 		// 如果没有匹配的规则
