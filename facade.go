@@ -8,6 +8,9 @@ import (
 
 // 配置相关
 type AgentConfig = config.Config
+type AgentServer = config.Server
+type AgentLog = config.Log
+type AgentProxy = config.Proxy
 
 // 前置任务
 type Task = task.Task

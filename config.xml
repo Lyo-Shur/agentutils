@@ -1,7 +1,7 @@
 <xml>
     <!-- 服务器开启端口 -->
     <server port="8088"/>
-    <!-- 日志所在目类 -->
+    <!-- 日志所在目录 -->
     <log open="true" path="log"/>
     <!-- 反向代理设置 -->
     <proxy host="*" path="/test">

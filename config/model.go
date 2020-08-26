@@ -19,7 +19,7 @@ type Server struct {
 type Log struct {
 	// 是否开启日志
 	Open bool `xml:"open,attr"`
-	// 日志文件所在目类
+	// 日志文件所在目录
 	Path string `xml:"path,attr"`
 }
 
