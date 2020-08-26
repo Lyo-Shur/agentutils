@@ -16,6 +16,6 @@ type AgentProxy = config.Proxy
 type Task = task.Task
 
 // 启动服务
-func StartServer(conf AgentConfig, tasks []Task) {
-	server.StartServer(conf, tasks)
+func StartServer(conf AgentConfig) {
+	server.StartServer(conf)
 }

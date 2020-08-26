@@ -7,6 +7,8 @@ type Config struct {
 	Server  Server  `xml:"server"`
 	Log     Log     `xml:"log"`
 	Proxies []Proxy `xml:"proxy"`
+	// 前置处理任务
+	Tasks []task.Task
 }
 
 // 服务器配置

@@ -2,7 +2,6 @@ package server
 
 import (
 	"github.com/lyoshur/agentutils/config"
-	"github.com/lyoshur/agentutils/task"
 	"github.com/lyoshur/golog"
 	"io"
 	"math/rand"
@@ -14,7 +13,7 @@ import (
 )
 
 // 启动服务
-func StartServer(conf config.Config, tasks []task.Task) {
+func StartServer(conf config.Config) {
 	// 日志服务
 	logger := golog.GetLogger()
 	logger.AddHandler(golog.GetPrintHandler())
@@ -25,7 +24,7 @@ func StartServer(conf config.Config, tasks []task.Task) {
 	// 启动服务
 	addr := "0.0.0.0:" + conf.Server.Port
 	logger.Info("agent starts at " + addr)
-	http.HandleFunc("/", getHandler(conf, tasks, logger))
+	http.HandleFunc("/", getHandler(conf, logger))
 	err := http.ListenAndServe(addr, nil)
 	if err != nil {
 		logger.Error(err.Error())
@@ -33,12 +32,12 @@ func StartServer(conf config.Config, tasks []task.Task) {
 }
 
 // 获取请求处理程序
-func getHandler(conf config.Config, tasks []task.Task, logger *golog.Logger) func(w http.ResponseWriter, r *http.Request) {
+func getHandler(conf config.Config, logger *golog.Logger) func(w http.ResponseWriter, r *http.Request) {
 	// 请求处理器
 	return func(w http.ResponseWriter, r *http.Request) {
 		// 优先处理前置请求
-		for i := range tasks {
-			if !tasks[i].Do(w, r) {
+		for i := range conf.Tasks {
+			if !conf.Tasks[i].Do(w, r) {
 				return
 			}
 		}
