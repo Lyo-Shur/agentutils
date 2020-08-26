@@ -39,6 +39,7 @@ func (r *RequestLogger) Log() {
 	if len(bs) != 0 {
 		buffer.WriteString("----" + "Body:" + string(bs) + "\n")
 	}
+	r.request.Body = ioutil.NopCloser(bytes.NewBuffer(bs))
 	r.logger.Info(buffer.String())
 }
 
