@@ -1,5 +1,7 @@
 package config
 
+import "github.com/lyoshur/agentutils/task"
+
 // 配置文件信息
 type Config struct {
 	Server  Server  `xml:"server"`
@@ -27,6 +29,8 @@ type Proxy struct {
 	Host string `xml:"host,attr"`
 	// 代理路径
 	Path string `xml:"path,attr"`
+	// 前置处理任务
+	Tasks []task.Task
 	// 代理列表
 	Urls []string `xml:"url"`
 }

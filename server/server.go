@@ -88,8 +88,18 @@ func getHandler(conf config.Config, tasks []task.Task, logger *golog.Logger) fun
 		r.Host = remote.Host
 		r.URL.Host = r.Host
 
+		// 代理前置任务
+		if proxy.Tasks != nil {
+			for i := range proxy.Tasks {
+				if !proxy.Tasks[i].Do(w, r) {
+					return
+				}
+			}
+		}
+
 		// 打印代理后内容
 		requestLogger.Log()
+
 		// 执行代理
 		reverseProxy := httputil.NewSingleHostReverseProxy(remote)
 		reverseProxy.ServeHTTP(w, r)
